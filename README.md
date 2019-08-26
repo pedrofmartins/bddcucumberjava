@@ -10,7 +10,7 @@ To be able to run this project you will need:
 ## Runing the tests
 
 Open the project at Eclipse.
-     >> Open the file runTest.java, change the chromedriver.exe path to your directory and as a Junit test (//src//test//java//io.cucumber.skeleton)
+     >> Open the file runTest.java, change the feature path to your directory and as a Junit test (//src//test//java//io.cucumber.skeleton)
 	 >> Be sure the file compra.feature is inside (//src//test//resources//io//cucumber//skeleton)
 	 
 	 
