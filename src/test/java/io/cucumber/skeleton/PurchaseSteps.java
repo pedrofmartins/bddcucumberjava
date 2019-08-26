@@ -24,7 +24,7 @@ public class PurchaseSteps {
 	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\io\\cucumber\\skeleton\\chromedriver.exe");
 	driver = new ChromeDriver();
 	driver.manage().window().maximize();
-	driver.get("https://demo.cs-cart.com/stores/edf0abe2aa809435/");
+	driver.get("https://demo.cs-cart.com");
 	driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			
 	}

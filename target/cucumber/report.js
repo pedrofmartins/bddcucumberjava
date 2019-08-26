@@ -128,21 +128,21 @@ formatter.match({
   "location": "PurchaseSteps.user_app_home_page()"
 });
 formatter.result({
-  "duration": 23245789958,
+  "duration": 42638342276,
   "status": "passed"
 });
 formatter.match({
   "location": "PurchaseSteps.user_clicks_on_Product()"
 });
 formatter.result({
-  "duration": 5708549406,
+  "duration": 10077130423,
   "status": "passed"
 });
 formatter.match({
   "location": "PurchaseSteps.user_clicks_on_Buynow()"
 });
 formatter.result({
-  "duration": 73462861,
+  "duration": 40910254,
   "status": "passed"
 });
 formatter.match({
@@ -163,21 +163,21 @@ formatter.match({
   "location": "PurchaseSteps.user_enters_username_and_password(String,String,String)"
 });
 formatter.result({
-  "duration": 1624922060,
+  "duration": 2232167034,
   "status": "passed"
 });
 formatter.match({
   "location": "PurchaseSteps.user_clicks_on_submit()"
 });
 formatter.result({
-  "duration": 163223195,
+  "duration": 114793498,
   "status": "passed"
 });
 formatter.match({
   "location": "PurchaseSteps.close_the_Browser()"
 });
 formatter.result({
-  "duration": 218456014,
+  "duration": 1083278380,
   "status": "passed"
 });
 });
