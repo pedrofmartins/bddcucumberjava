@@ -1,98 +1,119 @@
-# Cucumber-Java Skeleton
+# Setup
 
-[![Build Status](https://travis-ci.org/cucumber/cucumber-java-skeleton.svg?branch=master)](https://travis-ci.org/cucumber/cucumber-java-skeleton)
+To be able to run this project you will need:
 
-This is the simplest possible build script setup for Cucumber using Java.
-There is nothing fancy like a webapp or browser testing. All this does is to show you how
-to install and run Cucumber!
+1 - Eclipse IDE
+2 - Java version 1.8
+3 - Cucumber dependencies (it's at pom file)
+4 - Íf necessary, update the libraries needed to run the tests.
 
-There is a single feature file with one scenario. The scenario has three steps, two of them pending. See if you can make them all pass!
+## Runing the tests
 
-## Get the code
+Open the project at Eclipse.
+     >> Open the file runTest.java, change the chromedriver.exe path to your directory and as a Junit test (//src//test//java//io.cucumber.skeleton)
+	 >> Be sure the file compra.feature is inside (//src//test//resources//io//cucumber//skeleton)
+	 
+	 
+## The pom must be
 
-Git:
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-    git clone https://github.com/cucumber/cucumber-java-skeleton.git
-    cd cucumber-java-skeleton
+    <groupId>cucumber</groupId>
+    <artifactId>cucumber-java-skeleton</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+    <name>Cucumber-Java Skeleton</name>
 
-Subversion:
+    <properties>
+        <java.version>1.8</java.version>
+        <junit.version>4.12</junit.version>
+        <cucumber.version>4.3.1</cucumber.version>
+        <maven.compiler.version>3.3</maven.compiler.version>
+    </properties>
 
-    svn checkout https://github.com/cucumber/cucumber-java-skeleton/trunk cucumber-java-skeleton
-    cd cucumber-java-skeleton
+    <dependencies>
+   
 
-Or simply [download a zip](https://github.com/cucumber/cucumber-java-skeleton/archive/master.zip) file.
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
 
-## Use Maven
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm</artifactId>
+			<version>1.2.5</version>
+			<type>pom</type>
+		</dependency>
 
-Open a command window and run:
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
 
-    mvn test
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-jvm-deps</artifactId>
+			<version>1.0.5</version>
+		</dependency>
 
-This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the `RunCukesTest`
-class tells JUnit to kick off Cucumber.
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
-## Use Gradle
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>2.12.2</version>
+		</dependency>
 
-Open a command window and run:
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
 
-    gradlew test --info
 
-This runs Cucumber features using Cucumber's JUnit runner. The `@RunWith(Cucumber.class)` annotation on the `RunCukesTest`
-class tells JUnit to kick off Cucumber.
 
-## Overriding options
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.5.3</version>
+		</dependency>
 
-The Cucumber runtime parses command line options to know what features to run, where the glue code lives, what plugins to use etc.
-When you use the JUnit runner, these options are generated from the `@CucumberOptions` annotation on your test.
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>1.2.5</version>
+			<scope>test</scope>
+		</dependency>
 
-Sometimes it can be useful to override these options without changing or recompiling the JUnit class. This can be done with the
-`cucumber.options` system property. The general form is:
 
-Using Maven:
 
-    mvn -Dcucumber.options="..." test
+	</dependencies>
 
-Using Gradle:
-
-    gradlew -Dcucumber.options="..." test
-
-Let's look at some things you can do with `cucumber.options`. Try this:
-
-    -Dcucumber.options="--help"
-
-That should list all the available options.
-
-*IMPORTANT*
-
-When you override options with `-Dcucumber.options`, you will completely override whatever options are hard-coded in
-your `@CucumberOptions` or in the script calling `cucumber.api.cli.Main`. There is one exception to this rule, and that
-is the `--plugin` option. This will not _override_, but _add_ a plugin. The reason for this is to make it easier
-for 3rd party tools (such as [Cucumber Pro](https://cucumber.pro/)) to automatically configure additional plugins by appending arguments to a `cucumber.properties`
-file.
-
-### Run a subset of Features or Scenarios
-
-Specify a particular scenario by *line* (and use the pretty plugin, which prints the scenario back)
-
-    -Dcucumber.options="classpath:skeleton/belly.feature:4 --plugin pretty"
-
-This works because Maven puts `./src/test/resources` on your `classpath`.
-You can also specify files to run by filesystem path:
-
-    -Dcucumber.options="src/test/resources/skeleton/belly.feature:4 --plugin pretty"
-
-You can also specify what to run by *tag*:
-
-    -Dcucumber.options="--tags @bar --plugin pretty"
-
-### Running only the scenarios that failed in the previous run
-
-    -Dcucumber.options="@target/rerun.txt"
-
-This works as long as you have the `rerun` formatter enabled.
-
-### Specify a different formatter:
-
-For example a JUnit formatter:
-
-    -Dcucumber.options="--plugin junit:target/cucumber-junit-report.xml"
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
